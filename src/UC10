@@ -1,0 +1,39 @@
+import java.util.Scanner;
+
+public class UseCase10PalindromeCheckerApp {
+
+    // Function to check palindrome (ignoring case and spaces)
+    public static boolean isPalindrome(String input) {
+        // Step 1: Normalize string
+        // Remove spaces and convert to lowercase
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+
+        // Step 2: Check palindrome using two pointers
+        int left = 0;
+        int right = normalized.length() - 1;
+
+        while (left < right) {
+            if (normalized.charAt(left) != normalized.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
+
+        if (isPalindrome(input)) {
+            System.out.println("The string is a palindrome (ignoring spaces and case).");
+        } else {
+            System.out.println("The string is NOT a palindrome.");
+        }
+
+        scanner.close();
+    }
+}
